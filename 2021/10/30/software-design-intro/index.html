@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="software design,设计模式,设计原则,SOLID," />
 
 
 
@@ -79,12 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Shopee某Dev团队">
-<meta property="og:url" content="https://shopeedev.github.io/index.html">
+<meta name="description" content="前言软件设计中，什么最重要？能让软件灵活、低成本修改的前提下，又能尽可能减少变化带来的风险。 如何能达到这个目的呢？有如下几个方面：  能不修改原有代码就不修改，变化的功能完全通过新增代码来解决。(OCP原则) 必须修改原有代码时，尽量把代码的变化限制在足够小的范围内。（正交性） 模块&#x2F;类&#x2F;方法的职责单一化，边界划分时将可能联动的变化隔离 (SRP原则) 对代码进行抽象，抽象的东西更具普适性，更容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈软件设计">
+<meta property="og:url" content="https://shopeedev.github.io/2021/10/30/software-design-intro/index.html">
 <meta property="og:site_name" content="Shopee某Dev团队">
+<meta property="og:description" content="前言软件设计中，什么最重要？能让软件灵活、低成本修改的前提下，又能尽可能减少变化带来的风险。 如何能达到这个目的呢？有如下几个方面：  能不修改原有代码就不修改，变化的功能完全通过新增代码来解决。(OCP原则) 必须修改原有代码时，尽量把代码的变化限制在足够小的范围内。（正交性） 模块&#x2F;类&#x2F;方法的职责单一化，边界划分时将可能联动的变化隔离 (SRP原则) 对代码进行抽象，抽象的东西更具普适性，更容">
 <meta property="og:locale">
+<meta property="article:published_time" content="2021-10-30T01:38:05.000Z">
+<meta property="article:modified_time" content="2021-10-30T02:30:40.038Z">
 <meta property="article:author" content="Shopee Developer">
+<meta property="article:tag" content="software design,设计模式,设计原则,SOLID">
 <meta name="twitter:card" content="summary">
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://shopeedev.github.io/"/>
+  <link rel="canonical" href="https://shopeedev.github.io/2021/10/30/software-design-intro/"/>
 
 
 
 
 
-  <title>Shopee某Dev团队</title>
+  <title>浅谈软件设计 | Shopee某Dev团队</title>
   
 
 
@@ -150,8 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -224,9 +228,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -256,9 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/10/30/software-design-intro/" itemprop="url">浅谈软件设计</a></h1>
+          <h1 class="post-title" itemprop="name headline">浅谈软件设计</h1>
         
 
         <div class="post-meta">
@@ -310,9 +312,7 @@
       
 
       
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>软件设计中，什么最重要？能让软件灵活、低成本修改的前提下，又能尽可能减少变化带来的风险。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>软件设计中，什么最重要？能让软件灵活、低成本修改的前提下，又能尽可能减少变化带来的风险。</p>
 <p>如何能达到这个目的呢？有如下几个方面：</p>
 <ul>
 <li>能不修改原有代码就不修改，变化的功能完全通过新增代码来解决。(<a target="_blank" rel="noopener" href="https://weread.qq.com/web/reader/480322f072021a3248038c8k98f3284021498f137082c2e">OCP原则</a>)</li>
@@ -424,8 +424,6 @@
 <li><a target="_blank" rel="noopener" href="https://weread.qq.com/web/reader/480322f072021a3248038c8kc81322c012c81e728d9d180">架构整洁之道</a></li>
 </ul>
 
-          
-        
       
     </div>
     
@@ -440,196 +438,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shopeedev.github.io/2021/10/28/%E5%B7%A5%E7%A8%8B%20_%20%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E4%BC%98%E7%A7%80%E7%9A%84%E5%8D%95%E6%B5%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shopee某Dev团队">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/10/28/%E5%B7%A5%E7%A8%8B%20_%20%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E4%BC%98%E7%A7%80%E7%9A%84%E5%8D%95%E6%B5%8B/" itemprop="url">工程 | 如何写出优秀的单测</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-28T13:12:11+08:00">
-                2021-10-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
-          <span> ｜ </span><span class="fa fa-user-o"> </span><span style="color:#222;"> doubleLLL</span>
+            <a href="/tags/software-design-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99-SOLID/" rel="tag"># software design,设计模式,设计原则,SOLID</a>
           
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="价值"><a href="#价值" class="headerlink" title="价值"></a>价值</h1><ul>
-<li>减少BUG，思考代码可测试性，适当重构，提高代码质量</li>
-<li>越早发现BUG，修复成本越小，提高工作效率</li>
-<li>让QA开心，增进团队友谊</li>
-</ul>
-<h1 id="FIRST原则"><a href="#FIRST原则" class="headerlink" title="FIRST原则"></a>FIRST原则</h1><ul>
-<li>F：快速</li>
-<li>I：隔离，不影响其它测试用例和共享资源</li>
-<li>R：可重复执行，结果稳定</li>
-<li>S：可自我检验，有断言</li>
-<li>T：及时，越早越好</li>
-<li>[+] T：全面</li>
-</ul>
-<h1 id="写单测思路"><a href="#写单测思路" class="headerlink" title="写单测思路"></a>写单测思路</h1><p>❗️前提是熟悉代码逻辑。</p>
-<ol>
-<li>进入头文件：<ol>
-<li>查看对外暴露的方法，如果有遵守的协议，还可以查看协议里可以实现的方法，这些方法是可以在单测中直接调用的。</li>
-<li>对于不可以直接调用，但想单独测试的方法，可以额外创建Test类别，在里面暴露方法</li>
-</ol>
-</li>
-<li>进入源文件：通过观察或者断点调试理清方法之间的调用关系。</li>
-<li>按照代码逻辑书写单测。</li>
-</ol>
-<h1 id="iOS单测框架：Quick"><a href="#iOS单测框架：Quick" class="headerlink" title="iOS单测框架：Quick"></a>iOS单测框架：Quick</h1><ol>
-<li><a target="_blank" rel="noopener" href="https://github.com/Quick/Nimble">Nimble</a>框架是<a target="_blank" rel="noopener" href="https://github.com/Quick/Quick">Quick</a>框架的伙伴，主要提供断言功能</li>
-<li>常用宏（从外到里）<ol>
-<li>QuickSpecBegin(类名+Spec)：开始</li>
-<li>describe：描述类、方法</li>
-<li>beforeEach：里面的内容会在作用域内每个it执行前运行一次，一般用来保证实例的纯净与全新</li>
-<li>context：描述条件、场景</li>
-<li>it：代表⼀个测试，会紧接一段具体的描述</li>
-<li>itBehavesLike：可以共享测试用例，减少重复代码，可参考<ol>
-<li><a target="_blank" rel="noopener" href="https://github.com/Quick/Quick/blob/master/Documentation/zh-cn/SharedExamples.md">使用</a><a target="_blank" rel="noopener" href="https://github.com/Quick/Quick/blob/master/Documentation/zh-cn/SharedExamples.md"> Shared Assertion </a><a target="_blank" rel="noopener" href="https://github.com/Quick/Quick/blob/master/Documentation/zh-cn/SharedExamples.md">来复用测试模板代码</a>——Quick官方</li>
-<li><a target="_blank" rel="noopener" href="https://confluence.shopee.io/pages/viewpage.action?pageId=261368227">iOS单测案例</a>——Confluence</li>
-</ol>
-</li>
-<li>QuickSpecEnd：结束</li>
-<li>PS：加前缀 x / f 可以暂时 禁用 / 只关注 例子，如 xit / fit</li>
-</ol>
-</li>
-</ol>
-<p>PS：</p>
-<ul>
-<li>示例：<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">describe(<span class="string">&quot;a dolphin&quot;</span>) &#123;</span><br><span class="line">  describe(<span class="string">&quot;its click&quot;</span>) &#123;</span><br><span class="line">    context(<span class="string">&quot;when the dolphin is near something interesting&quot;</span>) &#123;</span><br><span class="line">      it(<span class="string">&quot;is emitted three times&quot;</span>) &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>可以在Xcode中添加代码模板，方便快速使用：</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/doubleLLL3/blogImgs@main/img/image-20211028130842243.png" alt="添加代码块"></p>
-<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><ul>
-<li>关键是测试逻辑；不测试UI，包括但不限于页面跳转、弹出消息、弹出页面等，UI有对应的UITest框架。</li>
-<li>每一个测试都需要验证结果。</li>
-<li>不需要单独测试网络请求，如果用到了可以尝试OCMock框架。</li>
-<li>不要过于追求覆盖率。</li>
-</ul>
-<p>PS：给自己的代码写单测会更符合设计理念，其它人来写可以有更多样的视角。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/387540827">如何写好单元测试？</a>——知乎</li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.51cto.com/art/202009/627659.htm">如何写好单元测试？</a>——51CTO</li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/268511977">单元测试中的FIRST原则</a>——知乎</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/Quick/Quick/tree/master/Documentation/zh-cn">Quick官方中文文档</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/Quick/Quick/blob/master/Documentation/en-us/QuickExamplesAndGroups.md">Organized Tests with Quick Examples and Example Groups</a>——Quick官方</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/10/28/%E5%B7%A5%E7%A8%8B%20_%20%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E4%BC%98%E7%A7%80%E7%9A%84%E5%8D%95%E6%B5%8B/" rel="next" title="工程 | 如何写出优秀的单测">
+                <i class="fa fa-chevron-left"></i> 工程 | 如何写出优秀的单测
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -639,10 +477,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -650,6 +489,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -670,8 +513,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -722,6 +574,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="nav-number">2.</span> <span class="nav-text">设计原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OCP-SRP-DIP"><span class="nav-number">2.1.</span> <span class="nav-text">OCP&#x2F;SRP&#x2F;DIP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LSP-ISP"><span class="nav-number">2.2.</span> <span class="nav-text">LSP&#x2F;ISP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E5%AE%83%E5%8E%9F%E5%88%99"><span class="nav-number">2.3.</span> <span class="nav-text">其它原则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">3.1.</span> <span class="nav-text">对象的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">3.2.</span> <span class="nav-text">对象间的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">3.2.1.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E8%A3%85"><span class="nav-number">3.2.2.</span> <span class="nav-text">包装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%A1%8C%E4%B8%BA"><span class="nav-number">3.3.</span> <span class="nav-text">对象的行为</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -855,6 +723,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
