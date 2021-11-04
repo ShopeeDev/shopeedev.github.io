@@ -312,119 +312,21 @@
       
         
           
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>软件设计中，什么最重要？能让软件灵活、低成本修改的前提下，又能尽可能减少变化带来的风险。</p>
-<p>如何能达到这个目的呢？有如下几个方面：</p>
-<ul>
-<li>能不修改原有代码就不修改，变化的功能完全通过新增代码来解决。(<a target="_blank" rel="noopener" href="https://weread.qq.com/web/reader/480322f072021a3248038c8k98f3284021498f137082c2e">OCP原则</a>)</li>
-<li>必须修改原有代码时，尽量把代码的变化限制在足够小的范围内。（正交性）<ul>
-<li>模块/类/方法的职责单一化，边界划分时将可能联动的变化隔离 (<a target="_blank" rel="noopener" href="https://weread.qq.com/web/reader/480322f072021a3248038c8k1f032c402131f0e3dad99f3">SRP原则</a>)</li>
-<li>对代码进行抽象，抽象的东西更具普适性，更容易在变化中做到不变。并且抽象的部分不要依赖于具体的部分（<a target="_blank" rel="noopener" href="https://weread.qq.com/web/reader/480322f072021a3248038c8k37632cd021737693cfc7149">DIP原则</a>）</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>正交性：源于<a target="_blank" rel="noopener" href="https://book.douban.com/subject/1152111/">《程序员修炼之道》</a>，是一个核心指导原则。是指当某个模块有修改、变化时，对周边其它模块不造成任何影响。</p>
-</blockquote>
-<h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><h3 id="OCP-SRP-DIP"><a href="#OCP-SRP-DIP" class="headerlink" title="OCP/SRP/DIP"></a>OCP/SRP/DIP</h3><p>根据上面这些推导，就能看出来设计原则也是为了满足目的而总结出来的经验。虽然在<a target="_blank" rel="noopener" href="https://weread.qq.com/web/reader/480322f072021a3248038c8kc81322c012c81e728d9d180">《架构整洁之道》</a>中提炼了SOLID五种设计原则，但根据上面的推论，可以看出来OCP/SRP/DIP是更加核心的设计原则。</p>
-<p>如果从逻辑上来讲，OCP应该跟正交性属于同一个层次。</p>
-<p>OCP在设计模式中的使用也是非常常用的指导原则，比如<code>观察者模式</code>、<code>职责链</code>、<code>装饰器模式</code>等，都是OCP原则的使用。</p>
-<p>OCP也是可大可小的原则，在越大的系统上，OCP越重要。比如互联网，核心层是非常稳定，扩展性非常强，要发布新的网站完全是不需要修改互联网底层。</p>
-<blockquote>
-<p>互联网的这个例子，来自<a target="_blank" rel="noopener" href="https://time.geekbang.org/column/intro/313">软件设计之美</a>，非常具有启发性。</p>
-</blockquote>
-<p>针对OCP原则，在<a target="_blank" rel="noopener" href="https://time.geekbang.org/column/article/176075">《设计模式之美》</a>中提了一个有趣的问题：修改代码就意味着违背开闭原则吗？</p>
-<p>其实不一定。比如实现某个需求时，如果在某个类中扩展了一个接口，那么对接口来说是满足OCP，但对类来说是不满足的(对模块和类层次来说也一样)。所以是否满足OCP不能简单一概而论。专栏中给出了这样的结论：<strong>尽量让修改操作更集中、更少，尽量让最核心、最复杂的那部分逻辑代码满足开闭原则。</strong></p>
-<h3 id="LSP-ISP"><a href="#LSP-ISP" class="headerlink" title="LSP/ISP"></a>LSP/ISP</h3><p>那SOLID中剩余的LSP及ISP原则是有什么用处呢？</p>
-<p>LSP(里氏替换原则)从定义上来说：任何基类可以出现的地方，子类都可以替换它。</p>
-<p>子类可以完全替换父类，这个约束可以产生什么样的结果呢？</p>
-<ul>
-<li>子类只能去扩展基类，而不能隐藏或者覆盖基类行为。这其实是对OCP的实践。</li>
-<li>抽象层确定下来的行为，具体类不能改变它，只能适应它；也就是实现要依赖于抽象，而非具体。这其实是对DIP的实践。</li>
-</ul>
-<p>所以本质上LSP是在满足DIP和OCP的原则下推导出的一个具体原则。</p>
-<p>ISP(接口隔离原则)从定义上来说：不应强迫使用者依赖于它们不用的方法。ISP有如下作用：</p>
-<ul>
-<li>源码层面的变化隔离，可以一定程度上提升源码编译速度。</li>
-<li>对更高层次模块来说，可以防止不必要依赖变化时，都需要重新编译、布署。</li>
-</ul>
-<p>ISP与SRP一定程度上有些相似性，但并不一样。ISP更侧重于接口的设计，思考角度也是略不同的。</p>
-<p>ISP迫使我们在接口的维度上来思考，使我们站在行为的角度上来思考。行为是更加复杂易变的，实体会更加稳定。那么基于行为进行职责划分与隔离，就更容易封装变化。</p>
-<h3 id="其它原则"><a href="#其它原则" class="headerlink" title="其它原则"></a>其它原则</h3><p>除SOLID原则外，还有一些比较有名的指导原则：</p>
-<ul>
-<li>针对接口编程：本质也是将代码分层，接口设计即抽象层的设计，也即DIP的实践。</li>
-<li>KISS：使代码保持简洁。注意，如果问题很复杂，此时解决方案复杂的话，也可以认为是满足KISS原则的。</li>
-<li>YAGNI：不要做过度设计。不要提前写用不到的代码，但预留扩展性是必要的。</li>
-<li>DRY：完全重复的代码不一定违反DRY，不完全一样的代码也可能违反了DRY。详情可以参考：<a target="_blank" rel="noopener" href="https://time.geekbang.org/column/article/179607">重复的代码就一定违背DRY吗？如何提高代码的复用性？</a></li>
-<li>LOD：不该有直接依赖关系的类之间，不要有依赖；有依赖关系的类之间，尽量只依赖必要的接口。 详解参考：<a target="_blank" rel="noopener" href="https://time.geekbang.org/column/article/179615">如何用迪米特法则（LOD）实现“高内聚、松耦合”？</a></li>
-</ul>
-<blockquote>
-<p><code>KISS</code>、<code>LOD</code>、<code>YAGNI</code>等原则的一些详细说明，<a target="_blank" rel="noopener" href="https://time.geekbang.org/column/intro/250">《设计模式之美》</a> 对这块的详细介绍是很值得看一下的<br><code>DRY</code>原则，在《程序员修炼之道》中有更全面的说明，DRY不止指代码层面的重复，还包括意图等方面的重复</p>
-</blockquote>
-<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>面向对象开发中，代码中遍布着对象。那么面向对象开发中对象及对象关系的处理就是非常重要的。GoF总结的设计模式，也可以围绕对象的关系/行为来理解。</p>
-<p>对象的处理，可以划分为如下三种关系/行为：</p>
-<ul>
-<li>对象的创建</li>
-<li>对象间的关系</li>
-<li>对象的行为</li>
-</ul>
-<p>站在这个角度来理解设计模式是更容易理解的。但我们需要先考虑的是，为什么会存在这些设计模式。要研究这个问题，还是需要基于具体场景来看</p>
-<blockquote>
-<p>比较简单的单例、观察者模式，以及使用场景比较受限的解释器，还有仅为了内存优化而存在的FlyWeight模式并没有涉及</p>
-</blockquote>
-<h3 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h3><p>直接创建一个类会有什么问题呢？可能会违反DIP原则，导致抽象类依赖于具体类。</p>
-<p>如何解决这个问题呢？在抽象层中不做具体的创建，只保留基类中对象的引用。只要想办法给引用赋值即可，一种办法是在外部创建好后再传进来(即依赖注入)。如果在对象中存在继承关系，还有一种办法就是在子类中创建。</p>
-<p>在子类中创建的方式就是**<code>工厂模式</code>**，具体实现上就是抽象类提供<code>create</code>接口返回具体的对象，子类重载该接口返回具体对象。</p>
-<p>有批量对象需要创建，对象之间存在约束：某些类型的对象只能同时使用。为了满足该约束，需要封装创建者，并将创建者也进一步分层为抽象类及具体类，就是**<code>抽象工厂模式</code>**</p>
-<p>有批量对象要创建，这些对象创建完之后还需要做进一步拼装/组合等操作，同样需要封装创建者并进行设计分层，将拼装/组合的差异放在具体创建者子类中，就是**<code>创建者模式</code>**</p>
-<p>如果要对已有对象(包含状态)进行复制，就是**<code>原型模式</code>**</p>
-<p>创建型的设计模式，都在遵循<strong>封装变化</strong>、<strong>对接口编程</strong>这些根本原则。</p>
-<h3 id="对象间的关系"><a href="#对象间的关系" class="headerlink" title="对象间的关系"></a>对象间的关系</h3><p>对象与对象之间有多少种关系呢？</p>
-<ul>
-<li>继承</li>
-<li>包装(包含组合)</li>
-</ul>
-<p>在什么场景下，可以很好的利用对象关系的处理达到设计的目的呢？</p>
-<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>继承重要的作用就是将代码进行分层，分为抽象层与具体层，并且尽量保持抽象层的稳定。（虽然代码复用也是其中一个功能，但并不推荐）</p>
-<p>遇到问题需要对类进行分层时，要满足<code>DIP</code>原则的约束，针对这种约束沉淀出来的方案，自然就可以做到具体层可以随意变化，不影响抽象层，抽象层做一些调整时，具体层也可能完全不受影响。这就是**<code>桥接模式</code>**</p>
-<h4 id="包装"><a href="#包装" class="headerlink" title="包装"></a>包装</h4><p>如果目前已有一个对象，我们希望对其进行扩展或修改时，但又希望满足OCP原则，那如何做呢？（还一种情况，就是原始对象无法修改）</p>
-<p>有个办法就是通过一个Wrapper类，来将原有对象包装起来，并用Wrapper来替换原始对象的使用，以此来达到修改原始对象的功能。</p>
-<p>要改变原始类的接口名称时，在Wrapper的新接口中调用原始接口，就是**<code>适配器模式</code>**</p>
-<p>要扩展原始类的功能时，Wrapper与目标类设计为同样类型的对象。在Wrapper中抽象接口实现时，除了调用目标对象的接口，还补充了自己的逻辑。就是**<code>装饰器模式</code>**</p>
-<p>修改原始类的行为时，Wrapper与目标类设计为同样类型的对象。在Wrapper中抽象接口实现时，可以按自己的预期来调整新的行为。就是**<code>代理模式</code>**</p>
-<p>如果对象结构间有一种递归性，比如大图案是由小图案组合而成的，并且可以不断递归组合。此时Wrapper与目标类设计为同样的类型对象，并且Wrapper中可以存储多个目标类型对象。Wrapper的接口实现上，会迭代调用内部目标对象的接口。这就是**<code>组合模式</code>**</p>
-<p>如果要扩大被包装目标的范围，比如是多个对象，或者某个模块，要对他们的接口进行调整，就可以产生**<code>外观模式</code>**</p>
-<h3 id="对象的行为"><a href="#对象的行为" class="headerlink" title="对象的行为"></a>对象的行为</h3><p>站在对象的行为上来考虑时，可以更多的从他们的时机和行为上来分析。</p>
-<p>如果有一系列操作需要执行，可以将这些操作封装为同一种类型的对象，然后在抽象层可以按序执行它们，就是**<code>Command模式</code>**</p>
-<p>如果有一个数据或事件，需要交给多个对象处理或执行。可以将这些处理对象封装为同一类型对象，数据/事件在这个对象链条上进行传递，就是**<code>职责链模式</code>**</p>
-<p>如果系统中存在不同的状态，并且这些状态可以随着系统执行不断改变其中的状态时，就可以将这些状态封装为同一类型对象，核心执行逻辑可以不关心使用的具体对象，这就是**<code>状态模式</code>**</p>
-<p>如果系统中存在不同的状态，并且在不同场景会使用不同对象时，就可以将这些状态封装为同一类型对象，要使用不同策略，仅需要将策略对象设置给该系统，这就是**<code>策略模式</code>**</p>
-<p>如果某容器内有多个元素，想在不了解容器内部实现的情况下枚举其中的内部元素，就可以通过提供统一访问协议，容器来实现该协议以达到遍历的目的。这就是**<code>迭代器模式</code>**</p>
-<p>如果某个对象有存取需求，并且不想暴露内部实现，就可以让该对象提供导出/导入状态的接口，在外部来存取相应数据。这就是**<code>备忘录模式</code>**</p>
-<p>如果在完成某件任务时，有统一的执行流程，不同场景下的差异仅在于细节上的差异，就可以在抽象层实现流程和通用的执行细节，具体差异部分通过子类重写保留的接口来实现。这就是**<code>模板模式</code>**</p>
-<p>如果想在不同场景对容器元素进行遍历操作并得到不同结果，并且要处理的元素类型比较固定，但处理的操作可能易变时，就可以让元素对象提供一个访问接口，然后把要处理的操作封装为<code>访问者对象</code>，访问者对象中可以对不同元素进行不同处理。这样就可以更好的满足OCP原则，这就是<strong>访问者模式</strong></p>
-<p>如果一组对象之间相互调用的关系比较复杂，形成了网状的结构时，通过增加一个中间交互对象的方式，来将各对象之间相互的引用解耦开，就是**<code>中介者模式</code>**</p>
-<blockquote>
-<p>在行为类模式中，状态模式跟策略模式是很像的，从类图上来看也是一致的。但两个模式处理的问题场景是不同的。<br>比如登录问题很适合用状态模式，登录过程分为几个状态，这几个状态在开始登录后，会自动切换其中的状态，一种状态切为另一种状态可能会执行不同的操作，该系统给外界的反馈可能也会有差异。<br>一个软件是试用模式还是正式模式，就可以比较适合使用策略模式，比如试用版本时某些功能的调用受限。如果用户付了费，可以直接将另外一个策略替换当前策略。</p>
-</blockquote>
-<p>其中<code>Command模式</code>、<code>职责链模式</code>、<code>状态模式</code>、<code>策略模式</code>在类结构上是比较相似的，可以用简单语言来描述的其中差异：</p>
-<ul>
-<li>当一系列对象有统一行为接口，在抽象层可以按序执行它们，就是<code>Command模式</code></li>
-<li>当一系列对象有统一行为接口，并且数据或事件会沿着这一系列对象传递时，就是<code>职责链模式</code></li>
-<li>当一系列对象有统一行为接口，在不同时机会切换不同的对象，就是<code>状态模式</code></li>
-<li>当一系列对象有统一行为接口，在不同的场景使用不同的对象，就是<code>策略模式</code></li>
-</ul>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>现在再回过头来看，设计模式是什么呢？设计模式其实是针对场景总结出的设计经验。</p>
-<p>学习设计模式最重要的是什么？<strong>透彻理解设计原则是最重要的</strong>。如果熟练掌握了设计原则，即使从来不知道设计模式，仍然能在开发过程中自然而然的用上设计模式。</p>
-<p>当然并不是说设计模式没有价值，首先是它可以给我们一些指导和演示，告诉我们在某些场景下比较优秀的设计是什么样的。其次它是一种沟通语言，可以在不同的开发之间方便的传达设计思路。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/ochococo/Design-Patterns-In-Swift/blob/master/README-CN.md">设计模式（Swift 5.0 实现）</a></li>
-<li><a target="_blank" rel="noopener" href="https://share.weiyun.com/unKs5RJG">设计模式迷你手册</a></li>
-<li><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/intro/250">设计模式之美</a></li>
-<li><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/intro/313">软件设计之美</a></li>
-<li><a target="_blank" rel="noopener" href="https://weread.qq.com/web/reader/480322f072021a3248038c8kc81322c012c81e728d9d180">架构整洁之道</a></li>
-</ul>
+          前言软件设计中，什么最重要？能让软件灵活、低成本修改的前提下，又能尽可能减少变化带来的风险。
+如何能达到这个目的呢？有如下几个方面：
 
-          
+能不修改原有代码就不修改，变化的功能完全通过新增代码来解决。(OCP原则)
+必须修改原有代码时，尽量把代码的变化限制在足够小的范围内。（正交性）
+模块/类/方法的职责单一化，边界划分时将可能联动的变化隔离 (SRP原则)
+对代码进行抽象，抽象的东西更具普适性，更容
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/10/30/software-design-intro/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -544,69 +446,31 @@
       
         
           
-            <h1 id="价值"><a href="#价值" class="headerlink" title="价值"></a>价值</h1><ul>
-<li>减少BUG，思考代码可测试性，适当重构，提高代码质量</li>
-<li>越早发现BUG，修复成本越小，提高工作效率</li>
-<li>让QA开心，增进团队友谊</li>
-</ul>
-<h1 id="FIRST原则"><a href="#FIRST原则" class="headerlink" title="FIRST原则"></a>FIRST原则</h1><ul>
-<li>F：快速</li>
-<li>I：隔离，不影响其它测试用例和共享资源</li>
-<li>R：可重复执行，结果稳定</li>
-<li>S：可自我检验，有断言</li>
-<li>T：及时，越早越好</li>
-<li>[+] T：全面</li>
-</ul>
-<h1 id="写单测思路"><a href="#写单测思路" class="headerlink" title="写单测思路"></a>写单测思路</h1><p>❗️前提是熟悉代码逻辑。</p>
-<ol>
-<li>进入头文件：<ol>
-<li>查看对外暴露的方法，如果有遵守的协议，还可以查看协议里可以实现的方法，这些方法是可以在单测中直接调用的。</li>
-<li>对于不可以直接调用，但想单独测试的方法，可以额外创建Test类别，在里面暴露方法</li>
-</ol>
-</li>
-<li>进入源文件：通过观察或者断点调试理清方法之间的调用关系。</li>
-<li>按照代码逻辑书写单测。</li>
-</ol>
-<h1 id="iOS单测框架：Quick"><a href="#iOS单测框架：Quick" class="headerlink" title="iOS单测框架：Quick"></a>iOS单测框架：Quick</h1><ol>
-<li><a target="_blank" rel="noopener" href="https://github.com/Quick/Nimble">Nimble</a>框架是<a target="_blank" rel="noopener" href="https://github.com/Quick/Quick">Quick</a>框架的伙伴，主要提供断言功能</li>
-<li>常用宏（从外到里）<ol>
-<li>QuickSpecBegin(类名+Spec)：开始</li>
-<li>describe：描述类、方法</li>
-<li>beforeEach：里面的内容会在作用域内每个it执行前运行一次，一般用来保证实例的纯净与全新</li>
-<li>context：描述条件、场景</li>
-<li>it：代表⼀个测试，会紧接一段具体的描述</li>
-<li>itBehavesLike：可以共享测试用例，减少重复代码，可参考<ol>
-<li><a target="_blank" rel="noopener" href="https://github.com/Quick/Quick/blob/master/Documentation/zh-cn/SharedExamples.md">使用</a><a target="_blank" rel="noopener" href="https://github.com/Quick/Quick/blob/master/Documentation/zh-cn/SharedExamples.md"> Shared Assertion </a><a target="_blank" rel="noopener" href="https://github.com/Quick/Quick/blob/master/Documentation/zh-cn/SharedExamples.md">来复用测试模板代码</a>——Quick官方</li>
-<li><a target="_blank" rel="noopener" href="https://confluence.shopee.io/pages/viewpage.action?pageId=261368227">iOS单测案例</a>——Confluence</li>
-</ol>
-</li>
-<li>QuickSpecEnd：结束</li>
-<li>PS：加前缀 x / f 可以暂时 禁用 / 只关注 例子，如 xit / fit</li>
-</ol>
-</li>
-</ol>
-<p>PS：</p>
-<ul>
-<li>示例：<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">describe(<span class="string">&quot;a dolphin&quot;</span>) &#123;</span><br><span class="line">  describe(<span class="string">&quot;its click&quot;</span>) &#123;</span><br><span class="line">    context(<span class="string">&quot;when the dolphin is near something interesting&quot;</span>) &#123;</span><br><span class="line">      it(<span class="string">&quot;is emitted three times&quot;</span>) &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>可以在Xcode中添加代码模板，方便快速使用：</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/doubleLLL3/blogImgs@main/img/image-20211028130842243.png" alt="添加代码块"></p>
-<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><ul>
-<li>关键是测试逻辑；不测试UI，包括但不限于页面跳转、弹出消息、弹出页面等，UI有对应的UITest框架。</li>
-<li>每一个测试都需要验证结果。</li>
-<li>不需要单独测试网络请求，如果用到了可以尝试OCMock框架。</li>
-<li>不要过于追求覆盖率。</li>
-</ul>
-<p>PS：给自己的代码写单测会更符合设计理念，其它人来写可以有更多样的视角。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/387540827">如何写好单元测试？</a>——知乎</li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.51cto.com/art/202009/627659.htm">如何写好单元测试？</a>——51CTO</li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/268511977">单元测试中的FIRST原则</a>——知乎</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/Quick/Quick/tree/master/Documentation/zh-cn">Quick官方中文文档</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/Quick/Quick/blob/master/Documentation/en-us/QuickExamplesAndGroups.md">Organized Tests with Quick Examples and Example Groups</a>——Quick官方</li>
-</ul>
+          价值
+减少BUG，思考代码可测试性，适当重构，提高代码质量
+越早发现BUG，修复成本越小，提高工作效率
+让QA开心，增进团队友谊
 
-          
+FIRST原则
+F：快速
+I：隔离，不影响其它测试用例和共享资源
+R：可重复执行，结果稳定
+S：可自我检验，有断言
+T：及时，越早越好
+[+] T：全面
+
+写单测思路❗️前提是熟悉代码逻辑。
+
+进入头文件：
+查看对外暴露的方法，如果有遵守的协议，还可以查看协议里可以实
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/10/28/%E5%B7%A5%E7%A8%8B%20_%20%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E4%BC%98%E7%A7%80%E7%9A%84%E5%8D%95%E6%B5%8B/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
